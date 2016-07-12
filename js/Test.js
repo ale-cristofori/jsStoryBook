@@ -29,6 +29,7 @@ var Aristocrat = function(name, rank) {
 };
 
 function testAristocrat() {
+	debugger;
 	var aristocrat1 = new Aristocrat(20, 40);
 	var aristocrat2 = new Aristocrat('Madame de Pompadour', 3);
 	console.log("Hello my name is " + aristocrat2.name + " my rank is " + aristocrat2.rank + 
@@ -60,7 +61,7 @@ var Royals = function(){
 			}			
 		}
 		if (this.yourFriend) {
-			if (yourfoes > yourFriends || yourfoes == yourFriends) {
+			if (yourfoes < yourFriends || yourfoes == yourFriends) {
 				alert("I will give you a last chance to live, playing dice");
 				if (this.playDice()) {
 					alert("You don t have many friends but I trust you, YOU HAVE WON THE GAME!!");
@@ -73,10 +74,11 @@ var Royals = function(){
 			}
 		};
 	this.playDice = function() {
+		debugger;
 		do {
 			var yourAttempt = prompt("roll the dice!!, number between 1 and 6");
 			}
-		while (typeof yourAttempt != 'number');
+		while (isNaN(Number(yourAttempt)) && Number(yourAttempt) <= 6);
 		var royalAttempt = Math.floor(Math.random() * 6) + 1;
 		while(yourAttempt == royalAttempt) {
 			alert("I rolled the same number try again!");
