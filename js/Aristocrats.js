@@ -31,5 +31,6 @@ var Aristocrat = function(name, rank) {
 	}
 	this.friends = initFriendsFoes();
 	this.foes = initFriendsFoes();
-	this.yourFriendOrFoe = initBoolGenerator(); 
+	this.yourFriend = initBoolGenerator(); 
 }
+
