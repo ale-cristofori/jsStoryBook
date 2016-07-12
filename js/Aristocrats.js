@@ -1,13 +1,19 @@
-var Aristocrat = function(name,sex,rank) {
+/**
+* Aristocrat class:
+* base class used to create the main characters
+* in the game, those who mostly interact with
+* the players
+**/
+
+var Aristocrat = function(name, rank) {
 	var testArguments = function () {
-		if (typeof name != 'string' || typeof sex != 'string' || typeof rank != 'number' ) {
-			alert('submitted types not allowed. '
-			'name: string, sex: string, rank: number');
+		if (typeof name != 'string' || typeof rank != 'number' ) {
+			alert('invalid argument types, name: string, rank: number');
 			return
 		}
 	}
+	testArguments();
 	this.name = name;
-	this.sex = sex;
 	this.rank = rank;
 	//random friends or foes num on instatiation
 	var initFriendsFoes = function() {
@@ -26,9 +32,4 @@ var Aristocrat = function(name,sex,rank) {
 	this.friends = initFriendsFoes();
 	this.foes = initFriendsFoes();
 	this.yourFriendOrFoe = initBoolGenerator(); 
-}
-
-function testAristocrat() {
-	aristocrat1 = new Aristocrat(20,30,40);
-	aristocrat2 = new Aristocrat('Madame de Pompadour', 'female', 3);
 }

@@ -1,12 +1,18 @@
 //test for aristocrat class
-var Aristocrat = function(name,sex,rank) {
+var Aristocrat = function(name, rank) {
+	var testArguments = function () {
+		if (typeof name != 'string' || typeof rank != 'number' ) {
+			alert('invalid argument types, name: string, rank: number');
+			return
+		}
+	}
+	testArguments();
 	this.name = name;
-	this.sex = sex;
 	this.rank = rank;
 	//random friends or foes num on instatiation
 	var initFriendsFoes = function() {
 		return Math.floor(Math.random() * (10 - 0)) + 0;
-	};
+	}
 	//random boolean generator
 	var initBoolGenerator = function() {
 		var result = Math.random();
@@ -16,13 +22,20 @@ var Aristocrat = function(name,sex,rank) {
 			result = false;
 		}
 		return result;
-	};
+	}
 	this.friends = initFriendsFoes();
 	this.foes = initFriendsFoes();
 	this.yourFriendOrFoe = initBoolGenerator(); 
 };
 
-var testAristocrat = new Aristocrat('Madame de Pompadour','female', 2);
+function testAristocrat() {
+	var aristocrat1 = new Aristocrat(20, 40);
+	var aristocrat2 = new Aristocrat('Madame de Pompadour', 3);
+	console.log("Hello my name is " + aristocrat2.name + " my rank is " + aristocrat2.rank + 
+"  have " + aristocrat2.friends + " friends, " + aristocrat2.foes  + " foes and I am your friend: " + aristocrat2.yourFriendOrFoe);
+}
 
-console.log("Hello my name is " + testAristocrat.name + " and I am " + testAristocrat.sex + " my rank is " + testAristocrat.rank + 
-"  have " + testAristocrat.friends + " friends, " + testAristocrat.foes  + " foes and I am your friend: " + testAristocrat.yourFriendOrFoe);
+testAristocrat();
+
+
+
