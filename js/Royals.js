@@ -3,11 +3,12 @@
 * base class used to create the two other characters
 * in the game king and queen.
 **/
-
 var Royals = function(){
 	this.rank = 0;
 	this.yourFriend;
+	//function that decides on the life or death of the player
 	this.youDieOrLive = function(yourFriends, yourfoes) {
+		
 		if (!this.yourFriend) {
 			if (yourfoes > yourFriends) {
 				alert("I won't allow a troublemaker like you to devastate my court, you gotta be out of the way ASAP, PLEASE CHOP HIS HEAD OFF NOW!!!");
@@ -38,6 +39,8 @@ var Royals = function(){
 				alert("You can be a trustful person, my personal assistant, YOU HAVE WON THE GAME!!");}
 			}
 		};
+	//function that generates a random number between 1 and 6
+	//mimic a dice game
 	this.playDice = function() {
 		do {
 			var yourAttempt = prompt("roll the dice!!, number between 1 and 6");
@@ -62,9 +65,7 @@ var Royals = function(){
 * Royals sublclass, a male royal 
 * with particular activities and properties
 **/
-function King () {
-	
-	
+function King() {
 	this.name = "Roi Louis XVI";
 	this.age = 38;
 	this.sex = 'male';
@@ -81,3 +82,17 @@ function King () {
 }
 
 King.prototype = new Royals();
+
+/**
+* Queen class:
+* Royals subclass, a female royal
+* with particular activities and properties
+**/
+function Queen(){
+	this.name = "Reine Marie Antoinette";
+	this.age = 26;
+	this.sex = 'female';
+	//other functions here
+}
+
+Queen.prototype = new Royals();
