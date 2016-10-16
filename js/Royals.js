@@ -88,17 +88,21 @@ King.prototype = new Royals();
 * Royals subclass, a female royal
 * with particular activities and properties
 **/
-function Queen(){	
+function Queen(){
+	var classScope = this;
 	var answersObj = new Object();
 	var evaluateAnswers = function(sumAnswers) {
 		if (sumAnswers <= 7) {
-			alert("this is not good my friend");
+			alert("Thanks for your time, my inferior");
+			return false;
 		} else {
-			alert("this is good you might win the game");
+			alert("This was a really good conversation my friend!!");
+			return true;
 		}
 	}
 	var handleConversation = function (i = 1) {
-		switch (i) {
+		var promise = new Promise(function(resolve, reject){
+			switch (i) {
 			case 1:
 				alert("So my subject, what do you think about last week Mademoiselle Rupert's party? Did you enjoy it?");
 				var radioButtonsFirst = $([
@@ -158,20 +162,31 @@ function Queen(){
 					for (key in answersObj) {
 						sumAnswers += Number(answersObj[key]);
 					}
-					evaluateAnswers(sumAnswers);
+					var yourFriend = evaluateAnswers(sumAnswers);
+					if(yourFriend != 'undefined') {
+					resolve(yourFriend);
+				} else {
+					reject("Error");
+				}
 				});
 				break;
 			default:
 			alert("ERROR");
 			break;
 		};
-	}
+		});
+	promise.then(function(result){
+		classScope.yourFriend = result;
+		classScope.playDice();
+	}, function(err) {
+		console.log(err);
+		});
+	};
 	this.name = "Reine Marie Antoinette";
 	this.age = 26;
 	this.sex = 'female';
 	this.conversation = handleConversation;
 	//other functions here
 };
-
 Queen.prototype = new Royals();
 
